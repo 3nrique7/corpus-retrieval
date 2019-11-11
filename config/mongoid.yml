@@ -11,6 +11,7 @@ development:
       hosts:
         - mongo.local:27017
       options:
+        auth_mech: :scram      
         # Change the default write concern. (default = { w: 1 })
         # write:
         #   w: 1
@@ -156,3 +157,5 @@ production:
        # We recommend 15 because it allows for plenty of time
        # in most operating environments.
        connect_timeout: 15
+       auth_mech: :scram
+       auth_source: admin
