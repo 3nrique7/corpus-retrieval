@@ -3,32 +3,32 @@ web:
   ports:
     - "3000:3000"
   build: .
-  volumes:
-    - .:/app
+  volumes: #I will use ubuntu as windows WSL if i have to use this docker, and change the route to use ubuntu
+    - $PWD:/app #If you are using ubuntu only change it (- .:/app)
   links:
     - redis:redis.local
     - mongodb:mongo.local
   environment:
     - REDIS_URL=redis://redis.local/0
-    - MONGODB_HOST=mongo.local
-    - CLIENT_ID=12sdf3,12sdf3,1bdf23
-    - CLIENT_SECRET=12sdf3,12sdf3,1bdf23
-    - SLAVES=githubproxy1.com,githubproxy2.com,githubproxy3.com
+    - MONGODB_HOST=mongo.local 
+    - CLIENT_ID=e989795d110dfbd512ca,05175c42a6b8cc244b30,4a8db70b649c85120767
+    - CLIENT_SECRET=f567af99753e4c3218be64763b84342c5a4c61a2,223770f37e105a85696e9f98f925573d9fdbca79,096547bbce264188bfb5219db425444e6bc0700c
+    - SLAVES=proxy-git.herokuapp.com,proxy-git2.herokuapp.com,proxy-git1.herokuapp.com
 
 sidekiq:
   command: bundle exec sidekiq
   build: .
   volumes:
-    - .:/app
+    - $PWD:/app
   links:
     - redis:redis.local
     - mongodb:mongo.local
   environment:
     - REDIS_URL=redis://redis.local/0
     - MONGODB_HOST=mongo.local
-    - CLIENT_ID=12sdf3,12sdf3,1bdf23
-    - CLIENT_SECRET=12sdf3,12sdf3,1bdf23
-    - SLAVES=githubproxy1.com,githubproxy2.com,githubproxy3.com
+    - CLIENT_ID=e989795d110dfbd512ca,05175c42a6b8cc244b30,4a8db70b649c85120767
+    - CLIENT_SECRET=f567af99753e4c3218be64763b84342c5a4c61a2,223770f37e105a85696e9f98f925573d9fdbca79,096547bbce264188bfb5219db425444e6bc0700c
+    - SLAVES=proxy-git.herokuapp.com,proxy-git2.herokuapp.com,proxy-git1.herokuapp.com
 
 redis:
   image: redis:3.2

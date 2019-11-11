@@ -21,9 +21,9 @@ module GithubConsumer
         url = UrlBuilder.build(repos_url, 1, params[:sort], params[:order])
         client.register_request url do |first_page_json|
           items = get_remaning_pages(repos_url, first_page_json, params)
-
-          # une as urls
-          all_head_urls[i] = head_urls_from(items, params[:reversed])
+          
+       	  # une as urls
+	  all_head_urls[i] = head_urls_from(items, params[:reversed])  
         end
       end
       client.run_requests
@@ -36,8 +36,11 @@ module GithubConsumer
       head_urls = items.map do |repo_json|
         repo_json["contents_url"].gsub("{+path}", "")
       end
-
-      is_reversed ? head_urls.reverse : head_urls
+     # head_urls = items.map do |variable|
+	#      variable["full_name"].to_s + " ; " + variable["description"].to_s
+      #end
+     
+     is_reversed ? head_urls.reverse : head_urls
     end
 
     def get_remaning_pages(repos_url, first_page_json, params)

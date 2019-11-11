@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.0'
+ruby '2.3.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
@@ -27,6 +27,10 @@ gem "redis"
 gem "sidekiq"
 gem 'mongoid', '>= 4.0.0'
 gem 'rails_12factor'
+
+#Added bootstrap and mini_racer
+gem 'bootstrap', '~> 4.3.1'
+gem 'mini_racer', platforms: :ruby
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

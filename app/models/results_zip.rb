@@ -5,7 +5,7 @@ class ResultsZip
   class StatusDoesNotExist < StandardError; end
 
   STATUSES = %i[processing finished failed waiting]
-  TYPES = %w[readmes issues]
+  TYPES = %w[readmes descriptions issues]
   MAX_STORED = 10
   CHARS_PER_CHUNK = 14.megabytes
 
